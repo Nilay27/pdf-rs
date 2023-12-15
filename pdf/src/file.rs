@@ -576,6 +576,11 @@ where
         FileOptions { parse_options, .. self }
     }
 
+    pub fn get_data_vector(self, path: impl AsRef<Path>) -> Result<Vec<u8>> {
+        let data = std::fs::read(path)?;
+        Ok(data)
+    }
+
     /// open a file
     pub fn open(self, path: impl AsRef<Path>) -> Result<File<Vec<u8>, OC, SC, L>> {
         let data = std::fs::read(path)?;
